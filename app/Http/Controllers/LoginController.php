@@ -11,10 +11,10 @@ class LoginController extends Controller
         $formField = $request->only(['email', 'password']);
 
         if(Auth::attempt($formField)) {
-            return redirect()->intended('user.private');
+            return redirect()->intended('private');
         }
 
-        return redirect(route('user.login'))->withErrors([
+        return redirect(route('login'))->withErrors([
            'email'=>'Пользователь не найден'
         ]);
     }

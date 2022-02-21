@@ -16,7 +16,7 @@ class RegisterController extends Controller
             'name' => 'required'
         ]);
         if (User::where('email', $validate['email'])->exists()) {
-            return redirect(route('user.registration'))->withErrors([
+            return redirect(route('registration'))->withErrors([
                 'email' => 'Этот маил уже зареган дружок'
             ]);
         }
@@ -25,10 +25,10 @@ class RegisterController extends Controller
 
         if ($user) {
             Auth::login($user);
-            return redirect(route('user.private'));
+            return redirect(route('private'));
         }
 
-        return redirect(route('user.login'))->withErrors([
+        return redirect(route('login'))->withErrors([
             'formError' => 'Произошла ошибка при сохранении пользователя'
         ]);
     }

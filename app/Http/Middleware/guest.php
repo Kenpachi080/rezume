@@ -18,7 +18,7 @@ class guest
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect(route('user.private'));
+            return redirect(route('private'));
         } else {
             return $next($request);
         }
