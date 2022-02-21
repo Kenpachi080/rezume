@@ -17,7 +17,7 @@ use App\Http\Controllers\LoginController as LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomeу');
 });
 
 Route::name('user.')->group(function () {
