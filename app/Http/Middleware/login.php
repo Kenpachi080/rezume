@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +18,7 @@ class login
     public function handle(Request $request, Closure $next)
     {
         if (!(Auth::check())) {
-            return redirect(route('user.login'))->withErrors(['login'=> 'Авторизируйся друг']);
+            return redirect(route('login'))->withErrors(['login'=> 'Аутентифицируйся друг']);
         } else {
             return $next($request);
         }

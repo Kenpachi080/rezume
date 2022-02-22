@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as RegisterController;
 use App\Http\Controllers\LoginController as LoginController;
+use App\Http\Controllers\ContractController as ContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,41 +17,38 @@ use App\Http\Controllers\LoginController as LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware('guests')->group(function () {
+
 
     Route::get('/login', function () {
         return view('login');
     })->name('login');
 
+    Route::post('/login', [LoginController::class, 'login']);
+
 
     Route::get('/registration', function () {
-        if (Auth::check()) {
-            return redirect(route('user.private'));
-        }
         return view('registration');
     })->name('registration');
-
-    Route::post('/login', [LoginController::class, 'login']);
 
     Route::post('/registration', [RegisterController::class, 'save']);
 });
 
 Route::middleware('login')->group(function () {
+
+    Route::get('/', [ContractController::class, 'view'])->name('home');
+
+    Route::post('/create', [ContractController::class, 'create_contact'])->name('create');
+
+    Route::post('/', [ContractController::class, 'all']);
+
+    Route::post('/favorite', [ContractController::class, 'favorite'])->name('favoritePost');
+    Route::post('/favoriteDelete', [ContractController::class, 'favoriteDelete'])->name('favoritePostDelete');
+
+
     Route::get('/logout', function () {
         Auth::logout();
-        return redirect(route('user.login'));
+        return redirect(route('login'));
     })->name('logout');
-
-    Route::view('/home', 'home')->name('home');
-
-    Route::view('/private', 'private')->name('private');
-
-    Route::get('/test', function () {
-        return view('home');
-    });
 });
 

@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form-signin label {
+    padding-left: 5px;
+    float: left;
+}
+
+.text-center {
+    margin: 15% auto;
+    width: 400px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}
+
+.redirect {
+    margin-top: 10px;
+    font-size: 18px;
+}

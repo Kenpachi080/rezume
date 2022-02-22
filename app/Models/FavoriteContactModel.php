@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FavoriteContactModel extends Model
 {
     use HasFactory;
+    protected $fillable = ['UserID', "FavoriteID"];
 }

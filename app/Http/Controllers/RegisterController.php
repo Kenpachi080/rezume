@@ -17,7 +17,7 @@ class RegisterController extends Controller
         ]);
         if (User::where('email', $validate['email'])->exists()) {
             return redirect(route('registration'))->withErrors([
-                'email' => 'Этот маил уже зареган дружок'
+                'email' => 'Этот маил уже зареган друг'
             ]);
         }
 
@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
         if ($user) {
             Auth::login($user);
-            return redirect(route('private'));
+            return redirect(route('home'));
         }
 
         return redirect(route('login'))->withErrors([

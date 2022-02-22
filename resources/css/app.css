@@ -1,0 +1,29 @@
+.header_prod {
+    background: rgba(128, 128, 128, 0.51);
+    padding: 15px;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_prod .container {
+    width: 100% !important;
+}
+
+.container {
+    width: 80%;
+}
+
+.logo_title {
+    font-size: 18px;
+    color: black;
+}
+
+.logout_prod {
+    text-decoration: none;
+    color: aqua;
+    font-size: 18px;
+
+}
